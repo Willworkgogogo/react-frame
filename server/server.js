@@ -12,7 +12,7 @@ app.use('/public', express.static(path.join(__dirname, '../dist')))
 
 app.get('*', function (req, res) {
   const appString = ReactSSR.renderToString(serverEntry)
-  let str = tempalte.replace('<app></app>', appString)
+  let str = tempalte.replace('<!-- app -->', appString)
   res.send(str)  
 })
 
