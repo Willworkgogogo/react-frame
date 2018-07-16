@@ -2,10 +2,13 @@ const express = require('express');
 const ReactDomServer = require('react-dom/server');
 const fs = require('fs');
 const path = require('path');
+const favicon = require('serve-favicon');
 
 const isDev = process.env.NODE_ENV === 'development'
 
 const app = express()
+
+app.use(favicon(path.join(__dirname, '../', 'favicon.ico')))
 
 if (!isDev) {
   const serverEntry = require('../dist/server-entry').default;
@@ -14,7 +17,7 @@ if (!isDev) {
   app.get('*', function (req, res) {
     const appString = ReactDomServer.renderToString(serverEntry)
     let str = tempalte.replace('<!-- app -->', appString)
-    res.send(str)  
+    res.send(str)
   })
 } else {
   const devStatic = require('./util/dev-static');

@@ -76,6 +76,21 @@ insert_final_newline = true   // 文件末尾插入空行
 trim_trailing_whitespace = true // 多余空格shan'chu
 ```
 
+### git配置强制代码规范
+git commit 时检测代码是否符合eslint规范，否则提示错误，禁止提交
+```shell
+npm i husky -D
+```
+
+`修改package.json`
+```json
+// 添加两个脚本，在执行git commit时，husky会设置先执行npm run precommit
+"scripts": {
+    "lint": "eslint --ext .js --ext .jsx client/",
+    "precommit": "npm run lint"
+  },
+```
+
 ## Summary
 ### webpack-dev-server的配置
 > 思路：这里的目标是使用webpack插件启动一个本地服务，方便后续开发。
@@ -198,6 +213,34 @@ if (!isDev) {
 app.listen(3333, function() {
   console.log('server is listening at http://localhost:3333');
 })
+```
+
+### 添加nodemon，自动更新服务
+实现服务器端代码修改后自动重启服务。在根目录下添加nodemon.json文件
+
+```shell
+npm i nodemon -D # 安装
+```
+
+
+`nodemon.json`
+```json
+{
+  "restartable": "rs",
+  "ignore": [                             // 忽略文件，这些文件的更新不影响服务的更新启动
+    ".git",
+    "node_modules/**/node_modules",
+    ".eslintrc",
+    "client",
+    "build"
+  ],
+  "env": {
+    "NODE_ENV": "development"             // 设置环境变量
+  },
+  "verbose": true,                        // 错误提示
+  "ext": ".js"                            // 观测的文件类型扩展名
+}
+
 ```
 
 ## Issue
