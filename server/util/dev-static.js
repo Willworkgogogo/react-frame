@@ -22,7 +22,7 @@ const getTemplate = () => {
 
 const Module = module.constructor
 
-// 2. 读取webpack.config.server.js配置文件里的输出文件-->从内存中读取
+// 2. 读取webpack.config.server.js配置文件里的输出文件-->从内存中读取，加快开发阶段编译速度
 const mfs = new MemoryFs()
 const serverCompiler = webpack(serverConfig) // 生成webpackCompiler，通过watch方法监听entry入口文件的实时变化
 serverCompiler.outputFileSystem = mfs
@@ -43,7 +43,7 @@ serverCompiler.watch({}, (err, stats) => {
   const bundle = mfs.readFileSync(bundlePath, 'utf-8') // 注意：读出来的内容是Buffer格式，并不符合模块内容的定义 -->
 
   let m = new Module()
-  m._compile(bundle, 'server-entry.js') // 利用webpack的compile将Buffer内容编译
+  m._compile(bundle, 'server-entry.js') // 利用webpack的compile将Buffer内容编译 // 注意指定文件名，内存中存储需要
   serverBundle = m.exports.default
 })
 
