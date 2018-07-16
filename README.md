@@ -1,9 +1,15 @@
 ## 说明
-这是一个React项目的架构，主要理清项目目录的设置，构建工具的配置，服务端渲染的配置。
+这是一个React项目的架构，主要理清项目目录的设置，构建工具的配置，服务端渲染的配置，代码规范检查
 
 ## 启动
 ```shell
 npm run start # 启动项目
+
+npm run dev:client # 启动客户端服务器
+
+npm run dev:server # 启动服务端服务
+
+npm run build # 构建生成线上项目文件
 ```
 
 
@@ -15,19 +21,60 @@ build/              # webpack配置文件，工程脚本文件
 client/             # 应用文件
   -- app.js           # 入口文件
   -- app.jsx          # App组件
-  -- server-entry.js  # 导出App组件，提供给服务端渲染使用 
+  -- server-entry.js  # 导出App组件，提供给服务端渲染使用
   -- template.html    # 入口html文件
 dist/               # 编译后文件
 node_modules/       # npm包存储
 server/             # 存放后台服务文件
   -- server.js      # 路由、服务、静态文件路径映射
   util/
-    -- dev-static.js # 
+    -- dev-static.js #
 
 ```
 
 ## 代码规范
+### .eslintrc
+添加eslint配置，参考eslint官网，本项目继承了airbnb的react的规范
 
+`参考配置：`
+```json
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": "airbnb",
+  "rules": {
+    "semi": [0],
+    "react/jsx-filename-extension": [0]
+  }
+}
+
+```
+
+### .editorconfig 编辑器格式统一大法
+实现不同编辑器下，文件格式的统一，编辑器在安装插件后会根据该配置文件，在文件保存时自动格式化
+1. 需要在根目录配置.editorconfig
+1. 在编辑器下载有关editorconfig设置的插件，vscode用的是官方推荐的EditorConfig for VS Code
+
+`.editorconfig配置说明`
+```json
+root = true                   // 根目录
+
+[*]                           // 适用所有文件
+charset = utf-8
+indent_style = space          // 缩进类型
+indent_size = 2
+end_of_line = lf              //
+insert_final_newline = true   // 文件末尾插入空行
+trim_trailing_whitespace = true // 多余空格shan'chu
+```
 
 ## Summary
 ### webpack-dev-server的配置
@@ -56,7 +103,7 @@ if (isDev) {
     publicPath: '/public', // 和webpack的output属性统一
     historyApiFallback: {
       index: '/public/index.html' // 404返回的页面
-    } 
+    }
   }
   // config.plugins.push(new webpack.HotModuleReplacementPlugin()) // 添加插件，用于热更新
 }
