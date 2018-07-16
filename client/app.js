@@ -16,8 +16,9 @@ const render = Component => {
 render(App)
 
 if (module.hot) {
+  // accept 接收两个参数，更新模块，更新后的回调
   module.hot.accept('./app.jsx', () => {
     const NextApp = require('./app.jsx').default;
-    render(NextApp)
+    render(NextApp) // 将更新内容，重新渲染
   })
 }

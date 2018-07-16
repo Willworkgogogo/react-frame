@@ -11,16 +11,12 @@ const config = {
   output: {
     filename: '[name].[hash].js',
     path: path.join(__dirname, '../dist'),
-    publicPath: '/public'
+    publicPath: '/public/'
   },
   module: {
     rules: [
       {
-        test: /\.jsx$/,
-        loader: 'babel-loader'
-      },
-      {
-        test: /\.js$/,
+        test: /\.js|jsx$/,
         loader: 'babel-loader',
         query: {compact: false},
         exclude: [
@@ -51,12 +47,12 @@ if (isDev) {
     overlay: {
       errors: true // 错误时才出现遮罩，提示错误信息
     },
-    publicPath: '/public', // 和webpack的路径统一
+    publicPath: '/public/', // 和webpack的路径统一
     historyApiFallback: {
       index: '/public/index.html' // 404返回的页面
     } 
   }
-  config.plugins.push(new webpack.HotModuleReplacementPlugin())
+  config.plugins.push(new webpack.HotModuleReplacementPlugin()) // 这里启动模块热更新后，它的接口将暴露在module.hot下面
 }
 
 module.exports = config
