@@ -18,6 +18,13 @@ server/             # 存放后台服务文件
 
 ```
 
+## Summary
+#### webpack-dev-server的配置
+
+
+#### react-hot-loader 热更新插件的配置
+
+
 ## Issue
 1.执行webpack-dev-server报错
 > throw new Error('invalid "instanceof" keyword value ' + c);
