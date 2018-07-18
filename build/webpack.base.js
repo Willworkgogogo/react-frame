@@ -1,10 +1,15 @@
 const path = require('path');
 
+// const resolve = (addr) => path.resolve(__dirname, '../', addr)
+
 module.exports = {
   output: {
     filename: '[name].[hash].js',
     path: path.join(__dirname, '../dist'),
     publicPath: '/public/'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
   module: {
     rules: [
