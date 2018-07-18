@@ -249,3 +249,22 @@ npm i nodemon -D # 安装
 
 webpack-dev-server的[Issue](https://github.com/webpack/webpack-dev-server/issues/1355)里有关于这个的讨论, 暂时采取了其中的一个方法，降级webpack-dev-server版本到2.9.1
 
+
+2.大意造成的困扰很久的问题
+webpack, resolve.extensions配置的值的问题
+```json
+// 一开始我是这样写的, 然后控制台就报各种包引用错误
+// Module not found: Error: Can't resolve 'fbjs/lib/containsNode' in ... node_moudles里的包内部引用的文件
+// 以为是npm的问题，删了重装来回好几次，问题始终存在
+// 然后就是各种谷歌，他们问题基本是在说webpack是否全局安装
+resolve: {
+  extensions: ['js', 'jsx']
+}
+
+// 最后还是对比了别的webpack配置文件才发现了问题
+// 正确写法
+resolve: {
+  extensions: ['.js', '.jsx']
+}
+// 这是对文件扩展名的定义疏忽啦，手贱了。
+```
