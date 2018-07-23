@@ -2,14 +2,10 @@ import React from 'react'
 
 export default class TopicDetail extends React.Component {
   componentDidMount() {
-    // do somthing here
+    // do something here
   }
 
   render() {
-    return (
-      <div>
-        this is topic detail
-      </div>
-    )
+    return <div>this is topic detail</div>
   }
 }
