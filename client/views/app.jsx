@@ -1,7 +1,6 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
-import TopicList from './topic-list/index'
-import TopicDetail from './topic-detail/index'
+import { Link } from 'react-router-dom'
+import Routes from '../config/router'
 
 export default class App extends React.Component {
   componentDidMount() {
@@ -10,8 +9,11 @@ export default class App extends React.Component {
 
   render() {
     return [
-      <Route path="/" component={TopicList} />,
-      <Route path="/detail" component={TopicDetail} />,
+      <div>
+        <Link to="/">列表页</Link>
+        <Link to="/list/detail">详情页</Link>
+      </div>,
+      <Routes />
     ]
   }
 }

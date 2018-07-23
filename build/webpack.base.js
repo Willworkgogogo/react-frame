@@ -1,6 +1,6 @@
 const path = require('path');
 
-// const resolve = (addr) => path.resolve(__dirname, '../', addr)
+const resolve = (addr) =>  path.resolve(__dirname, '../', addr)
 
 module.exports = {
   output: {
@@ -9,6 +9,11 @@ module.exports = {
     publicPath: '/public/'
   },
   resolve: {
+    alias: {
+      '@': resolve('client'),
+      'views': resolve('client/views'),
+      'components': resolve('client/components')
+    },
     extensions: ['.js', '.jsx']
   },
   module: {
