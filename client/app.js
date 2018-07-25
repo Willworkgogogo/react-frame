@@ -7,7 +7,6 @@ import { Provider } from 'mobx-react'
 import App from './views/app'
 import appState from './store/app-state'
 
-const root = document.getElementById('root')
 const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
@@ -17,7 +16,7 @@ const render = (Component) => {
         </BrowserRouter>
       </Provider>
     </AppContainer>,
-    root,
+    document.getElementById('root'),
   )
 }
 

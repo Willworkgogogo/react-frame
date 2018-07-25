@@ -18,7 +18,7 @@ app.use(session({
   name: 'tid', // 设置cookie到浏览器端
   resave: false, // 重新生成cookie id
   saveUninitialized: false,
-  secret: 'react cnode class'
+  secret: 'react cnode class', // 加密
 }))
 
 app.use(favicon(path.join(__dirname, '../', 'favicon.ico')))

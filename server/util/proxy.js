@@ -23,7 +23,7 @@ module.exports = function (req, res, next) {
       asscesstoken: user.accessToken
     }),
     headers: {
-      'Content-Type': 'application/x-www-form-urlencode'
+      'Content-Type': 'application/x-www-form-urlencode' // 兼容cnode部分接口类型不统一
     }
   })
   .then(resp => {
