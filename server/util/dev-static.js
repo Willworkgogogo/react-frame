@@ -52,7 +52,7 @@ module.exports = function(app) {
   app.use('/public', proxy({target: 'http://localhost:8888'}))
 
   app.get('*', function(req, res) {
-    const content = ReactDomServer.renderToString(serverBundle)
+    const content = ReactDomServer.renderToNodeStream(serverBundle)
     getTemplate().then(template => {
       res.send(template.replace('<!-- app -->', content))
     })
