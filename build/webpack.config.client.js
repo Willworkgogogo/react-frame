@@ -35,6 +35,9 @@ if (isDev) {
     publicPath: '/public/', // 和webpack的路径统一
     historyApiFallback: {
       index: '/public/index.html' // 404返回的页面
+    },
+    proxy: {
+      '/api': 'http://localhost:3333'
     }
   }
   config.plugins.push(new webpack.HotModuleReplacementPlugin()) // 这里启动模块热更新后，它的接口将暴露在module.hot下面
