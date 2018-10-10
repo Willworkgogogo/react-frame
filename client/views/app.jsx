@@ -9,7 +9,7 @@ export default class App extends React.Component {
         <Link to="/">列表页</Link>
         <Link to="/list/detail">详情页</Link>
       </div>,
-      <Routes key="2" />
+      <Routes key="2" />,
     ]
   }
 }

@@ -1,3 +1,6 @@
+/*
+ * 与业务无关的状态
+ */
 import { observable, computed, action, autorun } from 'mobx' // eslint-disable-line
 
 export class AppState {
