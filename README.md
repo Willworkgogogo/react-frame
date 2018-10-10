@@ -5,9 +5,9 @@
 ```shell
 npm run start # 启动项目
 
-npm run dev:client # 启动客户端服务器
+npm run dev:client # 启动客户端服务 http://localhost:8888
 
-npm run dev:server # 启动服务端服务
+npm run dev:server # 启动服务端服务 http://localhost:3333
 
 npm run build # 构建生成线上项目文件
 ```
@@ -16,6 +16,7 @@ npm run build # 构建生成线上项目文件
 ## 项目目录
 ```shell
 build/              # webpack配置文件，工程脚本文件
+  -- webpack.base.js          # 公共配置
   -- webpack.config.client.js # 客户端webpack配置 --> 在dist目录生成入口html文件和打包后的react文件；开发环境配置了webpack-dev-server和热更新
   -- webpack.config.server.js # 服务端webpack配置 --> 执行该文件，将在dist目录生成符合commonjs规范的，包含了app.jsx组件内容的server-entry.js文件
 client/             # 应用文件
@@ -56,6 +57,29 @@ server/             # 存放后台服务文件
   }
 }
 
+```
+
+### .babelrc文件配置
+```json
+{
+  "presets": [
+    ["es2015", {"loose": true}],
+    "react",
+    "stage-1" // 装饰器需要，需要高阶的es规范
+  ],
+  "plugins": [
+    "transform-decorators-legacy", // 装饰器需要
+    "react-hot-loader/babel"
+  ]
+}
+```
+```shell
+# 配置的都需要进行插件安装,安装文件名有规律性
+"babel-plugin-transform-decorators-legacy": "^1.3.5",
+"babel-preset-es2015": "^6.24.1",
+"babel-preset-es2015-loose": "^8.0.0",
+"babel-preset-react": "^6.24.1",
+"babel-preset-stage-1": "^6.24.1",
 ```
 
 ### .editorconfig 编辑器格式统一大法
