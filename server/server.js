@@ -14,11 +14,11 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(session({
-  maxAge: 10 * 60 * 1000,
+  maxAge: 10 * 60 * 1000, // session时长
   name: 'tid', // 设置cookie到浏览器端
-  resave: false, // 重新生成cookie id
+  resave: false, // 是否重新生成cookie id，会造成资源浪费
   saveUninitialized: false,
-  secret: 'react cnode class', // 加密
+  secret: 'cnode react', // 加密cookie，保证cookie在浏览器端无法被解密
 }))
 
 app.use(favicon(path.join(__dirname, '../', 'favicon.ico')))

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-const ACCESS_TOKEN = '3cc35c25-f8b7-4450-88e5-91672f41a207'
+const ACCESS_TOKEN = '68d0eced-00ca-40c9-97fa-5f8366da781d'
 
 /* eslint-disable */
 export default class TestApi extends React.Component {
@@ -14,7 +14,7 @@ export default class TestApi extends React.Component {
   login() {
     axios
       .post('/api/user/login', {
-        accesstoken: ACCESS_TOKEN
+        accessToken: ACCESS_TOKEN
       })
       .then(resp => {
         console.log(resp)
