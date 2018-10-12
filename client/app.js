@@ -9,10 +9,12 @@ import AppState from './store/app-state'
 
 const root = document.getElementById('root')
 
+const state = window.__INITIAL__STATE__ // eslint-disable-line
+
 const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
-      <Provider appState={new AppState()}>
+      <Provider appState={new AppState(state.appState)}>
         <BrowserRouter>
           <Component />
         </BrowserRouter>

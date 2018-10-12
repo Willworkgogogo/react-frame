@@ -8,6 +8,8 @@ export default {
 
 export const createStoreMap = () => (
   {
-    appState: new AppState()
+    appState: new AppState(),
+    // ...
+    // 建立其他store
   }
 )

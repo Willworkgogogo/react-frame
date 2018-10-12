@@ -4,9 +4,16 @@
 import { observable, computed, action, autorun } from 'mobx' // eslint-disable-line
 
 export default class AppState {
-  @observable count = 0
+  constructor({ count, name } = { count: 0, name: 'Wilson' }) {
+    this.count = count
+    this.name = name
+  }
 
-  @observable name = 'Wilson'
+  @observable
+  count
+
+  @observable
+  name
 
   @computed
   get msg() {
@@ -21,5 +28,12 @@ export default class AppState {
   @action
   changeName(name) {
     this.name = name
+  }
+
+  toJson() {
+    return {
+      count: this.count,
+      name: this.name
+    }
   }
 }
