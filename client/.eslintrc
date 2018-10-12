@@ -17,6 +17,7 @@
     "comma-dangle": [0],
     "import/no-unresolved": [0],
     "react/require-default-props": [0],
-    "react/prefer-stateless-function": [0]
+    "react/prefer-stateless-function": [0],
+    "react/destructuring-assignment": [0]
   }
 }

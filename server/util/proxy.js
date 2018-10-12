@@ -7,7 +7,6 @@ const ACCESS_TOKEN = '68d0eced-00ca-40c9-97fa-5f8366da781d'
 module.exports = function(req, res, next) {
   const path = req.path
   const user = req.session.user
-  console.log('proxy coming');
   const needAccessToken = req.query.needAccessToken
   if (needAccessToken && !user.accessToken) {
     res.status(401).send({
@@ -47,4 +46,4 @@ module.exports = function(req, res, next) {
         })
       }
     })
-}
+} 

@@ -3,7 +3,7 @@
  */
 import { observable, computed, action, autorun } from 'mobx' // eslint-disable-line
 
-export class AppState {
+export default class AppState {
   @observable count = 0
 
   @observable name = 'Wilson'
@@ -23,7 +23,3 @@ export class AppState {
     this.name = name
   }
 }
-
-const appState = new AppState()
-
-export default appState
